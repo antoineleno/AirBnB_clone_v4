@@ -11,7 +11,7 @@ import uuid
 app = Flask(__name__)
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
-
+print("Antoine")
 
 @app.teardown_appcontext
 def close_db(error):
@@ -19,13 +19,13 @@ def close_db(error):
     storage.close()
 
 
-@app.route('/2-hbnb', strict_slashes=False)
+@app.route('/2-hbnb/', strict_slashes=False)
 def hbnb():
     """ HBNB is alive! """
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
-
+   
     for state in states:
         st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
 
